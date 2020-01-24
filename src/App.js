@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ShoppingList from './ShoppingList';
+import uuidv4 from 'uuid/v4';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import bakeryIcon from "./images/bakery_icon.png";
 import breadIcon from "./images/bread_icon.png";
-import cannedIcon from "./images/cannedgood_icon.png";
+import cansIcon from "./images/cans_icon.png";
 import dairyIcon from "./images/dairy_icon.png";
 import deliIcon from "./images/deli_icon.png";
 import freezerIcon from "./images/freezer_icon.png";
@@ -11,6 +12,7 @@ import householdIcon from "./images/household_icon.png";
 import meatIcon from "./images/meat_icon.png";
 import produceIcon from "./images/produce_icon.png";
 
+const LOCAL_STORAGE_KEY = 'shoppingApp.item'
 function App() {
   const [item, setItems] = useState([])
   const itemNameRef = useRef()
@@ -20,17 +22,25 @@ function App() {
     marginRight: ".5rem"
   }
 
+  useEffect(() => {
+    const storedItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+    if (storedItems) setItems(storedItems)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(item))
+  }, [item])
+
   function handleAddItem(e) {
     const itemName = itemNameRef.current.value
     if (itemName === '') return
     setItems(prevItems => {
-      return [...prevItems, {id: 1, itemName: itemName, complete: false}]
+      return [...prevItems, {id: uuidv4(), itemName: itemName, complete: false}]
     })
     itemNameRef.current.value = null
   }
   return (
     <>
-      <ShoppingList item={item} />
       <div className="container">
       <nav className="navbar navbar-expand-md bg-primary text-white navbar-dark sticky-top">
         <a className="navbar-brand" href="/#">Shopping List</a>
@@ -72,7 +82,7 @@ function App() {
       </nav>
 
       <form id="submitform">
-        <div className="form-row"> 
+        <div className="form-row mt-4 mb-4"> 
           <div className="col col-6 col-sm-6	col-md-6	col-lg-6	col-xl-6"> 
             <div className="md-form mt-0">
               <input type="text" className="form-control" placeholder="Type in your item" id="textarea" ref={itemNameRef}></input>
@@ -85,7 +95,7 @@ function App() {
               <option value="" disabled>Choose your option</option>
               <option value="Bakery"> Bakery</option>
               <option value="Bread"> Bread</option>
-              <option value="Canned Good"> Canned Good</option>
+              <option value="Cans"> Cans</option>
               <option value="Dairy"> Dairy</option>
               <option value="Deli"> Deli</option>
               <option value="Frozen"> Frozen</option>
@@ -98,14 +108,14 @@ function App() {
           <div className="col col-2 col-sm-2	col-md-2	col-lg-2	col-xl-2"> 
 
             <div className="form-group">
-                <button id="additembutton" className="btn btn-primary" type="submit" style={{width: "100%"}} onClick={handleAddItem}>Add</button>
+                <button className="btn btn-primary" style={{width: "100%"}} onClick={handleAddItem}>Add</button>
             </div>
           </div>
 
         </div>
 
       </form>
-
+      <ShoppingList item={item} />
       <div className="card-deck-wrapper">
       <div className="card-columns">
 
@@ -127,8 +137,8 @@ function App() {
         </div>
         <div className="card">
           <div className="card-header bg-info text-white" id="cannedgood">
-            <img src={cannedIcon} className="list-icon" alt="clipart of canned good" style={iconStyle}></img>
-            Canned Good
+            <img src={cansIcon} className="list-icon" alt="clipart of canned good" style={iconStyle}></img>
+            Cans
           </div>
           <div className="card-body" id="cannedgoodList">
           </div>

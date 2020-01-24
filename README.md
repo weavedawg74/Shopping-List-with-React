@@ -26,7 +26,7 @@ Design a simple tool that will allow the user to add shopping items to a list th
 * SASS
 * Git
 
-## Current Roadblocks:
+## Tasks to Tackle:
 * Make the category cards collapsible.
 * Make the category cards draggable and droppable. 
 
