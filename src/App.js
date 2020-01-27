@@ -13,9 +13,11 @@ import meatIcon from "./images/meat_icon.png";
 import produceIcon from "./images/produce_icon.png";
 
 const LOCAL_STORAGE_KEY = 'shoppingApp.item'
+
 function App() {
   const [item, setItems] = useState([])
   const itemNameRef = useRef()
+  const itemListRef = useRef()
   const iconStyle = {
     height: "2rem",
     width: "2rem", 
@@ -91,7 +93,7 @@ function App() {
 
           <div className="col col-4 col-sm-4	col-md-4	col-lg-4	col-xl-4"> 
 
-            <select className="browser-default custom-select" id="selectedOption">
+            <select className="browser-default custom-select" id="selectedOption" ref={itemListRef}>
               <option value="" disabled>Choose your option</option>
               <option value="Bakery"> Bakery</option>
               <option value="Bread"> Bread</option>
