@@ -16,8 +16,10 @@ const LOCAL_STORAGE_KEY = 'shoppingApp.item'
 
 function App() {
   const [item, setItems] = useState([])
-  const itemNameRef = useRef()
-  const itemListRef = useRef()
+  const setEditItemText = useState('')
+  const setEditItem = useState(false)
+  const currentText = useState()
+  const [itemNameRef, itemListRef] = useRef()
   const iconStyle = {
     height: "2rem",
     width: "2rem", 
@@ -33,6 +35,51 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(item))
   }, [item])
 
+  //function handleDeleteItem(e) {
+    // e.target.dataset.itemId
+    // when you add an item, you have to add a data-itemId attribute to the delete button <button data-itemId="...">... 
+    // pass down the handleDeleteItem handler as props to the child components
+    // in the child component, use the handler e => props.handleDeleteItem(e)
+    // modify your model such that you have a unique id for each item you have
+    //{ value: 'cheesecake', key:0}  <---- research React keys and rendering lists (especially deleting list items)
+  //}
+  function toggleItem(id) {
+    const newItems = [...item]
+    const items = newItems.find(item => item.id === id)
+    items.got = !items.got
+    setItems(newItems)
+  }
+
+  function editItem(id) {
+    state = {
+      value: {itemName},
+      isInEditMode: false
+    }
+
+    function changeEditMode ({
+      setState ({
+        isInEditMode: state.isInEditMode
+      })
+    })
+    function renderEditView {
+      return <div>
+          <input type="text" defaultValue={itemName}/>
+        </div>
+    }
+    function render() {
+      return state.isInEditMode ? 
+      :
+      <div onDoubleCLick={changeEditMode}>{state.value}</div>
+    }
+  }
+
+  function deleteItem(id) {
+    const itemId = item.id
+    const itemList = [...item]
+    itemList.splice(itemId, 1)
+    setItems(itemList)
+  }
+
   function handleAddItem(e) {
     const itemName = itemNameRef.current.value
     if (itemName === '') return
@@ -41,6 +88,7 @@ function App() {
     })
     itemNameRef.current.value = null
   }
+
   return (
     <>
       <div className="container">
@@ -117,7 +165,9 @@ function App() {
         </div>
 
       </form>
-      <ShoppingList item={item} />
+
+      <ShoppingList item={item} toggleItem={toggleItem} deleteItem={deleteItem} editItem={editItem} />
+
       <div className="card-deck-wrapper">
       <div className="card-columns">
 
