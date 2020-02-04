@@ -12,20 +12,26 @@ import householdIcon from "./images/household_icon.png";
 import meatIcon from "./images/meat_icon.png";
 import produceIcon from "./images/produce_icon.png";
 
+
 const LOCAL_STORAGE_KEY = 'shoppingApp.item'
 
 function App() {
-  const [item, setItems] = useState([])
-  const setEditItemText = useState('')
-  const setEditItem = useState(false)
-  const currentText = useState()
-  const [itemNameRef, itemListRef] = useRef()
-  const iconStyle = {
-    height: "2rem",
-    width: "2rem", 
-    marginRight: ".5rem"
-  }
-
+  const [item, setItems] = useState([])  // we will get rid of this
+  const [itemLists, setItemLists] = useState({
+    'Bakery': [],
+    'Bread': [],
+    'Cans': [],
+    'Dairy': [],
+    'Deli': [],
+    'Frozen': [],
+    'Household': [],
+    'Meat': [],
+    'Produce': [],
+  })
+  const itemNameRef = useRef()
+  const itemListRef = useRef()
+  const iconStyle = {height: "2rem", width: "2rem", marginRight: ".5rem"}
+  
   useEffect(() => {
     const storedItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
     if (storedItems) setItems(storedItems)
@@ -35,58 +41,85 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(item))
   }, [item])
 
-  //function handleDeleteItem(e) {
-    // e.target.dataset.itemId
-    // when you add an item, you have to add a data-itemId attribute to the delete button <button data-itemId="...">... 
-    // pass down the handleDeleteItem handler as props to the child components
-    // in the child component, use the handler e => props.handleDeleteItem(e)
-    // modify your model such that you have a unique id for each item you have
-    //{ value: 'cheesecake', key:0}  <---- research React keys and rendering lists (especially deleting list items)
-  //}
-  function toggleItem(id) {
+  function toggleItem(id, listName, itemName) {
+    setItemLists( prevItems => {
+      const copyPrevItems = {...prevItems}
+      //const currentList = copyPrevItems[listName]
+      //const itemIndex = currentList.findIndex(item => item.id === id)
+      console.log(itemName)
+      return copyPrevItems;
+    })
+  }
+
+  /*function toggleItem(id) {
     const newItems = [...item]
     const items = newItems.find(item => item.id === id)
     items.got = !items.got
     setItems(newItems)
   }
+  */
+  function deleteItem(id, listName) {
 
-  function editItem(id) {
-    state = {
-      value: {itemName},
-      isInEditMode: false
-    }
-
-    function changeEditMode ({
-      setState ({
-        isInEditMode: state.isInEditMode
-      })
+    setItemLists( prevItems => {
+      // Step 1: get the WHOLE data structure from the state hook getter and clone it 
+      const copyPrevItems = {...prevItems}
+      // Step 2: modify the (shallow) copied data structure
+      const currentList = copyPrevItems[listName]
+      const itemIndex = currentList.findIndex(item => item.id === id)
+      currentList.splice(itemIndex, 1)
+      // Step 3: return the modified data structure
+      return copyPrevItems;
     })
-    function renderEditView {
-      return <div>
-          <input type="text" defaultValue={itemName}/>
-        </div>
-    }
-    function render() {
-      return state.isInEditMode ? 
-      :
-      <div onDoubleCLick={changeEditMode}>{state.value}</div>
-    }
   }
 
-  function deleteItem(id) {
-    const itemId = item.id
-    const itemList = [...item]
-    itemList.splice(itemId, 1)
-    setItems(itemList)
+  function toggleEditItem(id, newItemName, listName) {
+    console.log( id, listName )
+    setItemLists( prevItems => {
+      // Step 1: get the WHOLE data structure from the state hook getter and clone it 
+      const copyPrevItems = {...prevItems}
+      // Step 2: modify the (shallow) copied data structure
+      const currentList = copyPrevItems[listName]
+      const itemIndex = currentList.findIndex(item => item.id === id)
+      currentList[itemIndex].isEdited = !currentList[itemIndex].isEdited;
+      // Step 3: If you finished editing, then change the name
+      // (when the item is not edited anymore --> isEdited property is changed to false)
+      if ( !currentList[itemIndex].isEdited ) {
+        currentList[itemIndex].itemName = newItemName
+      }
+      // Step 4: return the modified data structure
+      return copyPrevItems;
+    })
   }
 
-  function handleAddItem(e) {
+
+  /*
+    TODO for making Edit work
+      1. In Item.js, render a textfield when you see EDITING
+      2. Make this textfield in Item.js a stateful controlled component 
+  */
+
+  function handleAddItem(event) {
+    event.preventDefault();
+
     const itemName = itemNameRef.current.value
-    if (itemName === '') return
+    const itemListName = itemListRef.current.value
+    if (itemName === '') return 
+
+    setItemLists( prevItems => {
+      const copyPrevItems = {...prevItems};
+      const newValue = {id: uuidv4(), itemName: itemName, complete: false, isEdited: false};
+      copyPrevItems[itemListName].push( newValue );
+      return copyPrevItems;
+    })
+
+    // DELETE THIS LATER ALONG WITH THE setItems useState hook
+    /*
     setItems(prevItems => {
       return [...prevItems, {id: uuidv4(), itemName: itemName, complete: false}]
-    })
+    }) */
+
     itemNameRef.current.value = null
+    itemListRef.current.value = ""  // Set it to a proper value
   }
 
   return (
@@ -142,7 +175,7 @@ function App() {
           <div className="col col-4 col-sm-4	col-md-4	col-lg-4	col-xl-4"> 
 
             <select className="browser-default custom-select" id="selectedOption" ref={itemListRef}>
-              <option value="" disabled>Choose your option</option>
+              <option value="" disabled>Select your option</option>
               <option value="Bakery"> Bakery</option>
               <option value="Bread"> Bread</option>
               <option value="Cans"> Cans</option>
@@ -166,7 +199,7 @@ function App() {
 
       </form>
 
-      <ShoppingList item={item} toggleItem={toggleItem} deleteItem={deleteItem} editItem={editItem} />
+      <ShoppingList item={item} toggleItem={toggleItem} deleteItem={deleteItem} />
 
       <div className="card-deck-wrapper">
       <div className="card-columns">
@@ -176,7 +209,8 @@ function App() {
             <img src={bakeryIcon} className="list-icon" alt="clipart of bread" style={iconStyle}></img>
             Bakery      
           </div>
-          <div className="card-body" id="bakeryList">
+          <div className="card-body" id="bakeryList" title="Bakery">
+            <ShoppingList item={itemLists['Bakery']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Bakery')} editItem={(id, name) => toggleEditItem(id, name, 'Bakery')} />
           </div>
         </div>
         <div className="card">
@@ -185,6 +219,7 @@ function App() {
             Bread
           </div>
           <div className="card-body" id="breadList">
+          <ShoppingList item={itemLists['Bread']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Bread')} editItem={(id, name) => toggleEditItem(id, name, 'Bread')} />
           </div>
         </div>
         <div className="card">
@@ -193,6 +228,7 @@ function App() {
             Cans
           </div>
           <div className="card-body" id="cannedgoodList">
+            <ShoppingList item={itemLists['Cans']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Cans')} editItem={(id, name) => toggleEditItem(id, name, 'Cans')} />
           </div>
         </div>
 
@@ -202,6 +238,7 @@ function App() {
             Dairy
           </div>
           <div className="card-body" id="dairyList">
+          <ShoppingList item={itemLists['Dairy']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Dairy')} editItem={(id, name) => toggleEditItem(id, name, 'Dairy')} />
           </div>
         </div>
         <div className="card">
@@ -210,6 +247,7 @@ function App() {
             Deli
           </div>
           <div className="card-body" id="deliList">
+          <ShoppingList item={itemLists['Deli']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Deli')} editItem={(id, name) => toggleEditItem(id, name, 'Deli')} />
           </div>
         </div>
         <div className="card">
@@ -218,6 +256,7 @@ function App() {
             Frozen
           </div>
           <div className="card-body" id="frozenList">
+            <ShoppingList item={itemLists['Frozen']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Frozen')} editItem={(id, name) => toggleEditItem(id, name, 'Frozen')} />
           </div>
         </div>
         <div className="card">
@@ -226,6 +265,7 @@ function App() {
             Household
           </div>
           <div className="card-body" id="householdList">
+            <ShoppingList item={itemLists['Household']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Household')} editItem={(id, name) => toggleEditItem(id, name, 'Household')} />
           </div>
         </div>
         <div className="card">
@@ -234,6 +274,7 @@ function App() {
             Meat
           </div>
           <div className="card-body" id="meatList">
+          <ShoppingList item={itemLists['Meat']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Meat')} editItem={(id, name) => toggleEditItem(id, name, 'Meat')} />
           </div>
         </div>
         <div className="card">
@@ -242,6 +283,7 @@ function App() {
             Produce      
           </div>
           <div className="card-body" id="produceList">
+          <ShoppingList item={itemLists['Produce']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Produce')} editItem={(id, name) => toggleEditItem(id, name, 'Produce')} />
           </div>
         </div>
       </div>
