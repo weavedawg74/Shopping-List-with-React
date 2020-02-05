@@ -1,10 +1,10 @@
 import React from 'react'
 import Item from './Item'
 
-export default function ShoppingList({item, toggleItem, deleteItem, editItem, key}) {
+export default function ShoppingList({item, toggleItem, deleteItem, editItem, key, isGot}) {
     return (
       item.map(item => {
-          return <Item key={item.id} isEdited={item.isEdited} item={item} toggleItem={toggleItem} deleteItem={deleteItem} editItem={editItem}/>
+          return <Item key={item.id} isEdited={item.isEdited} item={item} toggleItem={toggleItem} deleteItem={deleteItem} editItem={editItem} isGot={item.isGot}/>
       })
     )
 }

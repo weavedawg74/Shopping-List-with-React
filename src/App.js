@@ -13,10 +13,10 @@ import meatIcon from "./images/meat_icon.png";
 import produceIcon from "./images/produce_icon.png";
 
 
-const LOCAL_STORAGE_KEY = 'shoppingApp.item'
+const LOCAL_STORAGE_KEY = 'shoppingApp.itemLists'
 
 function App() {
-  const [item, setItems] = useState([])  // we will get rid of this
+  //const [item, setItems] = useState([])  // we will get rid of this
   const [itemLists, setItemLists] = useState({
     'Bakery': [],
     'Bread': [],
@@ -33,21 +33,22 @@ function App() {
   const iconStyle = {height: "2rem", width: "2rem", marginRight: ".5rem"}
   
   useEffect(() => {
-    const storedItems = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
-    if (storedItems) setItems(storedItems)
+    const storedItemLists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+    if (storedItemLists) setItemLists(storedItemLists)
   }, [])
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(item))
-  }, [item])
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(itemLists))
+  }, [itemLists])
 
-  function toggleItem(id, listName, itemName) {
+  function toggleItem(id, listName) {
+    console.log( id, listName )
     setItemLists( prevItems => {
       const copyPrevItems = {...prevItems}
-      //const currentList = copyPrevItems[listName]
-      //const itemIndex = currentList.findIndex(item => item.id === id)
-      console.log(itemName)
-      return copyPrevItems;
+      const currentList = copyPrevItems[listName]
+      const itemIndex = currentList.findIndex(item => item.id === id)
+      currentList[itemIndex].isGot = !currentList[itemIndex].isGot
+      return copyPrevItems
     })
   }
 
@@ -199,7 +200,7 @@ function App() {
 
       </form>
 
-      <ShoppingList item={item} toggleItem={toggleItem} deleteItem={deleteItem} />
+     
 
       <div className="card-deck-wrapper">
       <div className="card-columns">
@@ -210,7 +211,7 @@ function App() {
             Bakery      
           </div>
           <div className="card-body" id="bakeryList" title="Bakery">
-            <ShoppingList item={itemLists['Bakery']} toggleItem={toggleItem} deleteItem={id => deleteItem(id, 'Bakery')} editItem={(id, name) => toggleEditItem(id, name, 'Bakery')} />
+            <ShoppingList item={itemLists['Bakery']} toggleItem={id => toggleItem(id, 'Bakery')} deleteItem={id => deleteItem(id, 'Bakery')} editItem={(id, name) => toggleEditItem(id, name, 'Bakery')} />
           </div>
         </div>
         <div className="card">
