@@ -12,9 +12,9 @@ Design a simple tool that will allow the user to add shopping items to a list, t
 * As a user I want to be able to cross items off my list as I pick them up so that I know what I still need to pick up.
 
 ### Desktop View:
-![Desktop View](https://github.com/weavedawg74/Shopping-List/blob/master/readme/desktopView.PNG)
+![Desktop View](https://github.com/weavedawg74/Shopping-List/blob/master/readme/desktopView.png)
 ### Mobile View:
-![Mobile View](https://github.com/weavedawg74/Shopping-List/blob/master/readme/mobileView.PNG)
+![Mobile View](https://github.com/weavedawg74/Shopping-List/blob/master/readme/mobileView.png)
 
 ## Technolgies used for this project:
 * HTML
