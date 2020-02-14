@@ -1,0 +1,36 @@
+{
+  "files": {
+    "main.css": "/Shopping-List-with-React/static/css/main.ec252399.chunk.css",
+    "main.js": "/Shopping-List-with-React/static/js/main.85c2a5fa.chunk.js",
+    "main.js.map": "/Shopping-List-with-React/static/js/main.85c2a5fa.chunk.js.map",
+    "runtime-main.js": "/Shopping-List-with-React/static/js/runtime-main.467ab93d.js",
+    "runtime-main.js.map": "/Shopping-List-with-React/static/js/runtime-main.467ab93d.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/Shopping-List-with-React/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.29ec9e91.chunk.js": "/Shopping-List-with-React/static/js/2.29ec9e91.chunk.js",
+    "static/js/2.29ec9e91.chunk.js.map": "/Shopping-List-with-React/static/js/2.29ec9e91.chunk.js.map",
+    "index.html": "/Shopping-List-with-React/index.html",
+    "precache-manifest.6324bc17d62b6d41a1d4b9cb7b10a2da.js": "/Shopping-List-with-React/precache-manifest.6324bc17d62b6d41a1d4b9cb7b10a2da.js",
+    "service-worker.js": "/Shopping-List-with-React/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/Shopping-List-with-React/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.ec252399.chunk.css.map": "/Shopping-List-with-React/static/css/main.ec252399.chunk.css.map",
+    "static/js/2.29ec9e91.chunk.js.LICENSE": "/Shopping-List-with-React/static/js/2.29ec9e91.chunk.js.LICENSE",
+    "static/media/bakery_icon.png": "/Shopping-List-with-React/static/media/bakery_icon.7338f94d.png",
+    "static/media/beverage_icon.png": "/Shopping-List-with-React/static/media/beverage_icon.993d7df1.png",
+    "static/media/cans_icon.png": "/Shopping-List-with-React/static/media/cans_icon.6bf0a980.png",
+    "static/media/dairy_icon.png": "/Shopping-List-with-React/static/media/dairy_icon.ced2e1a6.png",
+    "static/media/deli_icon.png": "/Shopping-List-with-React/static/media/deli_icon.c40b8700.png",
+    "static/media/household_icon.png": "/Shopping-List-with-React/static/media/household_icon.d976f913.png",
+    "static/media/hygiene_icon.png": "/Shopping-List-with-React/static/media/hygiene_icon.cc7c831d.png",
+    "static/media/meat_icon.png": "/Shopping-List-with-React/static/media/meat_icon.bea0eda5.png",
+    "static/media/pet_icon.png": "/Shopping-List-with-React/static/media/pet_icon.f7d169d4.png",
+    "static/media/produce_icon.png": "/Shopping-List-with-React/static/media/produce_icon.e6b3cf5d.png",
+    "static/media/shopping_cart.png": "/Shopping-List-with-React/static/media/shopping_cart.3f02e6ed.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.467ab93d.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.29ec9e91.chunk.js",
+    "static/css/main.ec252399.chunk.css",
+    "static/js/main.85c2a5fa.chunk.js"
+  ]
+}
