@@ -6,9 +6,9 @@ const Example = (props) => {
       
     return (
       <div>
-        <Navbar light expand="md" className="bg-secondary-25 stickey-bottom">
+        <Navbar light expand="md" className="bg-secondary-5 sticky-bottom">
          
-            <Nav className="nav navbar-nav ml-auto w-100 justify-content-between flex-row" navbar>
+            <Nav className="nav navbar-nav ml-auto w-100 justify-content-center flex-row" navbar>
             <NavItem>
                 <NavLink href="/"><img src="https://i.imgur.com/VdArSaM.png" alt="WEAVE Logo" width="40rem" height="50rem"/></NavLink>
               </NavItem>

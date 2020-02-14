@@ -51,7 +51,6 @@ function App() {
   }, [itemLists])
 
   function toggleItem(id, listName) {
-    console.log( id, listName )
     setItemLists( prevItems => {
       const copyPrevItems = {...prevItems}
       const currentList = copyPrevItems[listName]
@@ -72,7 +71,6 @@ function App() {
   }
 
   function toggleEditItem(id, newItemName, listName) {
-    console.log( id, listName )
     setItemLists( prevItems => {
       const copyPrevItems = {...prevItems}
       const currentList = copyPrevItems[listName]
@@ -97,7 +95,7 @@ function App() {
       return copyPrevItems
     })
     itemNameRef.current.value = null
-    itemListRef.current.value = ""
+    itemListRef.current.value = itemListName
   }
 
   return (
@@ -113,7 +111,7 @@ function App() {
             </div>
           </div>
 
-          <div className="col col-4 col-sm-4	col-md-4	col-lg-4	col-xl-4"> 
+          <div className="col col-4 col-sm-4	col-md-4 col-lg-4	col-xl-4"> 
 
             <select className="browser-default custom-select" id="selectedOption" ref={itemListRef}>
               <option value="" disabled>Select your option</option>
@@ -149,7 +147,7 @@ function App() {
       <div className="card-columns">
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="bakery">
+          <div className="card-header bg-info text-white fa-lg" id="bakery">
             <img src={bakeryIcon} className="list-icon" alt="clipart of bread" style={iconStyle}></img>
             Bakery      
           </div>
@@ -159,7 +157,7 @@ function App() {
         </div>
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="beverage">
+          <div className="card-header bg-info text-white fa-lg" id="beverage">
             <img src={beverageIcon} className="list-icon" alt="clipart of a drink" style={iconStyle}></img>
             Beverage      
           </div>
@@ -169,7 +167,7 @@ function App() {
         </div>
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="cannedgood">
+          <div className="card-header bg-info text-white fa-lg" id="cannedgood">
             <img src={cansIcon} className="list-icon" alt="clipart of canned good" style={iconStyle}></img>
             Cans
           </div>
@@ -179,7 +177,7 @@ function App() {
         </div>
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="condiments">
+          <div className="card-header bg-info text-white fa-lg" id="condiments">
             <img src={condimentsIcon} className="list-icon" alt="clipart of ketchup and mustard" style={iconStyle}></img>
             Condiments      
           </div>
@@ -189,7 +187,7 @@ function App() {
         </div>
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="dairy">
+          <div className="card-header bg-info text-white fa-lg" id="dairy">
             <img src={dairyIcon} className="list-icon" alt="clipart of cheese" style={iconStyle}></img>
             Dairy
           </div>
@@ -199,7 +197,7 @@ function App() {
         </div>
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="deli">
+          <div className="card-header bg-info text-white fa-lg" id="deli">
             <img src={deliIcon} className="list-icon" alt="clipart of sandwich" style={iconStyle}></img>
             Deli
           </div>
@@ -209,7 +207,7 @@ function App() {
         </div>
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="frozen">
+          <div className="card-header bg-info text-white fa-lg" id="frozen">
             <img src={freezerIcon} className="list-icon" alt="clipart of snowflake" style={iconStyle}></img>
             Frozen
           </div>
@@ -219,7 +217,7 @@ function App() {
         </div>
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="household">
+          <div className="card-header bg-info text-white fa-lg" id="household">
             <img src={householdIcon} className="list-icon" alt="clipart of cleaning items" style={iconStyle}></img>
             Household
           </div>
@@ -228,7 +226,7 @@ function App() {
           </div>
         </div>
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="hygiene">
+          <div className="card-header bg-info text-white fa-lg" id="hygiene">
             <img src={hygieneIcon} className="list-icon" alt="clipart of hygiene" style={iconStyle}></img>
             Hygiene      
           </div>
@@ -238,7 +236,7 @@ function App() {
         </div>
         
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="meat">
+          <div className="card-header bg-info text-white fa-lg" id="meat">
             <img src={meatIcon} className="list-icon" alt="clipart of steak" style={iconStyle}></img>
             Meat
           </div>
@@ -248,7 +246,7 @@ function App() {
         </div>
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="pet">
+          <div className="card-header bg-info text-white fa-lg" id="pet">
             <img src={petIcon} className="list-icon" alt="clipart of dog and cat" style={iconStyle}></img>
             Pet      
           </div>
@@ -258,7 +256,7 @@ function App() {
         </div>
 
         <div className="card border-dark">
-          <div className="card-header bg-info text-white" id="produce">
+          <div className="card-header bg-info text-white fa-lg" id="produce">
             <img src={produceIcon} className="list-icon" alt="clipart of broccoli" style={iconStyle}></img>
             Produce      
           </div>
