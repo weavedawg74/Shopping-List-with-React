@@ -2,15 +2,14 @@
 
 ## Overview:
 
-Design a simple tool that will allow the user to add shopping items to a list that can be reordered based on their preferences. The user will be to select their desired item category from a dropdown list and have the item added to the approriate section based on their selection.
+Design a simple tool that will allow the user to add shopping items to a list, the user will be to select their desired item category from a dropdown list and have the item added to the approriate section based on their selection.
 
 # Requirements:
 
 ## User Stories:
 * As a user I want to create a shopping list that I can use on my phone so that I can keep track of what I would like to get.
-* As a user I want to be able to reorder the categories so that the order of categories suits my shopping habits or store layout.
+* As a user I want to be able to assign items to the categories so that it better suits my shopping habits or store layout.
 * As a user I want to be able to cross items off my list as I pick them up so that I know what I still need to pick up.
-## Wireframes:
 
 ### Desktop View:
 ![Desktop View](https://github.com/weavedawg74/Shopping-List/blob/master/readme/desktopView.PNG)
@@ -25,10 +24,6 @@ Design a simple tool that will allow the user to add shopping items to a list th
 * React
 * SASS
 * Git
-
-## Tasks to Tackle:
-* Make the category cards collapsible.
-* Make the category cards draggable and droppable. 
 
 ## Future Improvements:
 1. I would like to add the ability to share/save the list with other users(family) that would allow them to add items to the list without losing any of the previously added data.
