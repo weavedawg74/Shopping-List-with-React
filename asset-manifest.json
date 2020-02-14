@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Shopping-List-with-React/static/css/main.ec252399.chunk.css",
-    "main.js": "/Shopping-List-with-React/static/js/main.85c2a5fa.chunk.js",
-    "main.js.map": "/Shopping-List-with-React/static/js/main.85c2a5fa.chunk.js.map",
+    "main.css": "/Shopping-List-with-React/static/css/main.fd6c5f82.chunk.css",
+    "main.js": "/Shopping-List-with-React/static/js/main.2f291870.chunk.js",
+    "main.js.map": "/Shopping-List-with-React/static/js/main.2f291870.chunk.js.map",
     "runtime-main.js": "/Shopping-List-with-React/static/js/runtime-main.467ab93d.js",
     "runtime-main.js.map": "/Shopping-List-with-React/static/js/runtime-main.467ab93d.js.map",
     "static/css/2.47e06e2e.chunk.css": "/Shopping-List-with-React/static/css/2.47e06e2e.chunk.css",
     "static/js/2.29ec9e91.chunk.js": "/Shopping-List-with-React/static/js/2.29ec9e91.chunk.js",
     "static/js/2.29ec9e91.chunk.js.map": "/Shopping-List-with-React/static/js/2.29ec9e91.chunk.js.map",
     "index.html": "/Shopping-List-with-React/index.html",
-    "precache-manifest.6324bc17d62b6d41a1d4b9cb7b10a2da.js": "/Shopping-List-with-React/precache-manifest.6324bc17d62b6d41a1d4b9cb7b10a2da.js",
+    "precache-manifest.28ae3cb3b0eecef56869354b0da56b7f.js": "/Shopping-List-with-React/precache-manifest.28ae3cb3b0eecef56869354b0da56b7f.js",
     "service-worker.js": "/Shopping-List-with-React/service-worker.js",
     "static/css/2.47e06e2e.chunk.css.map": "/Shopping-List-with-React/static/css/2.47e06e2e.chunk.css.map",
-    "static/css/main.ec252399.chunk.css.map": "/Shopping-List-with-React/static/css/main.ec252399.chunk.css.map",
+    "static/css/main.fd6c5f82.chunk.css.map": "/Shopping-List-with-React/static/css/main.fd6c5f82.chunk.css.map",
     "static/js/2.29ec9e91.chunk.js.LICENSE": "/Shopping-List-with-React/static/js/2.29ec9e91.chunk.js.LICENSE",
     "static/media/bakery_icon.png": "/Shopping-List-with-React/static/media/bakery_icon.7338f94d.png",
     "static/media/beverage_icon.png": "/Shopping-List-with-React/static/media/beverage_icon.993d7df1.png",
@@ -30,7 +30,7 @@
     "static/js/runtime-main.467ab93d.js",
     "static/css/2.47e06e2e.chunk.css",
     "static/js/2.29ec9e91.chunk.js",
-    "static/css/main.ec252399.chunk.css",
-    "static/js/main.85c2a5fa.chunk.js"
+    "static/css/main.fd6c5f82.chunk.css",
+    "static/js/main.2f291870.chunk.js"
   ]
 }
