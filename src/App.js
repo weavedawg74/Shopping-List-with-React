@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Navbar from './Navbar';
+import NavbarShopping from './NavbarShopping'
 import ShoppingList from './ShoppingList';
 import uuidv4 from 'uuid/v4';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 import bakeryIcon from "./images/bakery_icon.png";
 import cansIcon from "./images/cans_icon.png";
 import dairyIcon from "./images/dairy_icon.png";
@@ -10,7 +13,7 @@ import freezerIcon from "./images/freezer_icon.png";
 import householdIcon from "./images/household_icon.png";
 import meatIcon from "./images/meat_icon.png";
 import produceIcon from "./images/produce_icon.png";
-import fishIcon from "./images/fish_icon.png";
+import hygieneIcon from "./images/hygiene_icon.png";
 import beverageIcon from "./images/beverage_icon.png";
 import condimentsIcon from "./images/condiment_icon.png";
 import petIcon from "./images/pet_icon.png";
@@ -27,9 +30,9 @@ function App() {
     'Condiments': [],
     'Dairy': [],
     'Deli': [],
-    'Fish': [],
     'Frozen': [],
     'Household': [],
+    'Hygiene': [],
     'Meat': [],
     'Pet': [],
     'Produce': [],
@@ -71,26 +74,16 @@ function App() {
   function toggleEditItem(id, newItemName, listName) {
     console.log( id, listName )
     setItemLists( prevItems => {
-      // Step 1: get the WHOLE data structure from the state hook getter and clone it 
       const copyPrevItems = {...prevItems}
-      // Step 2: modify the (shallow) copied data structure
       const currentList = copyPrevItems[listName]
       const itemIndex = currentList.findIndex(item => item.id === id)
       currentList[itemIndex].isEdited = !currentList[itemIndex].isEdited
-      // Step 3: If you finished editing, then change the name
-      // (when the item is not edited anymore --> isEdited property is changed to false)
       if ( !currentList[itemIndex].isEdited ) {
         currentList[itemIndex].itemName = newItemName
       }
-      // Step 4: return the modified data structure
       return copyPrevItems
     })
   }
-  /*
-    TODO for making Edit work
-      1. In Item.js, render a textfield when you see EDITING
-      2. Make this textfield in Item.js a stateful controlled component 
-  */
 
   function handleAddItem(event) {
     event.preventDefault()
@@ -109,46 +102,9 @@ function App() {
 
   return (
     <>
+     
       <div className="container">
-      <nav className="navbar navbar-expand-md bg-primary text-white navbar-dark sticky-top">
-        <a className="navbar-brand" href="/#">Shopping List</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
-        <div className="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul className="navbar-nav">
-          <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a className="nav-link" href="#bakery">Bakery</a>
-          </li>
-          <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a className="nav-link" href="#bread">Bread</a>
-          </li>
-          <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a className="nav-link" href="#cannedgood">Canned Goods</a>
-          </li>
-          <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a className="nav-link" href="#dairy">Dairy</a>
-          </li>
-          <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a className="nav-link" href="#deli">Deli</a>
-          </li>
-          <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a className="nav-link" href="#frozen">Frozen</a>
-          </li>
-          <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a className="nav-link" href="#household">Household</a>
-          </li>
-          <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a className="nav-link" href="#meat">Meat</a>
-          </li>
-          <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-            <a className="nav-link" href="#produce">Produce</a>
-          </li>
-        </ul>
-      </div>
-      </nav>
-
+      <NavbarShopping />
       <form id="submitform">
         <div className="form-row mt-4 mb-4"> 
           <div className="col col-6 col-sm-6	col-md-6	col-lg-6	col-xl-6"> 
@@ -167,9 +123,9 @@ function App() {
               <option value="Condiments"> Condiments</option>
               <option value="Dairy"> Dairy</option>
               <option value="Deli"> Deli</option>
-              <option value="Fish"> Fish</option>
               <option value="Frozen"> Frozen</option>
               <option value="Household"> Household</option>
+              <option value="Hygiene"> Hygiene</option>
               <option value="Meat"> Meat</option>
               <option value="Pet"> Pet</option>
               <option value="Produce"> Produce </option>
@@ -192,7 +148,7 @@ function App() {
       <div className="card-deck-wrapper">
       <div className="card-columns">
 
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="bakery">
             <img src={bakeryIcon} className="list-icon" alt="clipart of bread" style={iconStyle}></img>
             Bakery      
@@ -202,7 +158,7 @@ function App() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="beverage">
             <img src={beverageIcon} className="list-icon" alt="clipart of a drink" style={iconStyle}></img>
             Beverage      
@@ -212,7 +168,7 @@ function App() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="cannedgood">
             <img src={cansIcon} className="list-icon" alt="clipart of canned good" style={iconStyle}></img>
             Cans
@@ -222,7 +178,7 @@ function App() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="condiments">
             <img src={condimentsIcon} className="list-icon" alt="clipart of ketchup and mustard" style={iconStyle}></img>
             Condiments      
@@ -232,7 +188,7 @@ function App() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="dairy">
             <img src={dairyIcon} className="list-icon" alt="clipart of cheese" style={iconStyle}></img>
             Dairy
@@ -242,7 +198,7 @@ function App() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="deli">
             <img src={deliIcon} className="list-icon" alt="clipart of sandwich" style={iconStyle}></img>
             Deli
@@ -252,17 +208,7 @@ function App() {
           </div>
         </div>
 
-        <div className="card">
-          <div className="card-header bg-info text-white" id="fish">
-            <img src={fishIcon} className="list-icon" alt="clipart of fish" style={iconStyle}></img>
-            Fish      
-          </div>
-          <div className="card-body" id="fishList">
-            <ShoppingList item={itemLists['Fish']} toggleItem={id => toggleItem(id, 'Fish')} deleteItem={id => deleteItem(id, 'Fish')} editItem={(id, name) => toggleEditItem(id, name, 'Fish')} />
-          </div>   
-        </div>
-
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="frozen">
             <img src={freezerIcon} className="list-icon" alt="clipart of snowflake" style={iconStyle}></img>
             Frozen
@@ -272,7 +218,7 @@ function App() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="household">
             <img src={householdIcon} className="list-icon" alt="clipart of cleaning items" style={iconStyle}></img>
             Household
@@ -281,8 +227,17 @@ function App() {
             <ShoppingList item={itemLists['Household']} toggleItem={id => toggleItem(id, 'Household')} deleteItem={id => deleteItem(id, 'Household')} editItem={(id, name) => toggleEditItem(id, name, 'Household')} />
           </div>
         </div>
-
-        <div className="card">
+        <div className="card border-dark">
+          <div className="card-header bg-info text-white" id="hygiene">
+            <img src={hygieneIcon} className="list-icon" alt="clipart of hygiene" style={iconStyle}></img>
+            Hygiene      
+          </div>
+          <div className="card-body" id="hygieneList">
+            <ShoppingList item={itemLists['Hygiene']} toggleItem={id => toggleItem(id, 'Hygiene')} deleteItem={id => deleteItem(id, 'Hygiene')} editItem={(id, name) => toggleEditItem(id, name, 'Hygiene')} />
+          </div>   
+        </div>
+        
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="meat">
             <img src={meatIcon} className="list-icon" alt="clipart of steak" style={iconStyle}></img>
             Meat
@@ -292,7 +247,7 @@ function App() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="pet">
             <img src={petIcon} className="list-icon" alt="clipart of dog and cat" style={iconStyle}></img>
             Pet      
@@ -302,7 +257,7 @@ function App() {
           </div>
         </div>
 
-        <div className="card">
+        <div className="card border-dark">
           <div className="card-header bg-info text-white" id="produce">
             <img src={produceIcon} className="list-icon" alt="clipart of broccoli" style={iconStyle}></img>
             Produce      
@@ -313,6 +268,7 @@ function App() {
         </div>
       </div>
       </div>
+      <Navbar />
       </div>
   </>
   )
