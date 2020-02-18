@@ -1,0 +1,11 @@
+/* line 1, ../../../Creative Cloud Files/shopping/sass/App.sass */
+body {
+  background-image: radial-gradient(circle, #b3e7d3, #b0e6d2, #ade6d0, #a9e5cf, #a6e4ce, #a1e3ce, #9de2ce, #98e1ce, #92e0d0, #8bdfd2, #85ddd4, #7edcd6);
+}
+
+/* line 4, ../../../Creative Cloud Files/shopping/sass/App.sass */
+.card {
+  min-width: 75%;
+}
+
+/*# sourceMappingURL=App.css.map */

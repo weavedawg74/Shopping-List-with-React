@@ -4,7 +4,11 @@
 
 Design a simple tool that will allow the user to add shopping items to a list, the user will be to select their desired item category from a dropdown list and have the item added to the approriate section based on their selection.
 
-# Requirements:
+## Installation Instructions:
+1. Download the files from Github
+2. Naviagate to the 'src' folder and open the App.js file in your local editor
+3. Ensure that you have npm installed on your local machine
+4. In the command terminal enter '*npm run start*' and the file should open properly in your browser
 
 ## User Stories:
 * As a user I want to create a shopping list that I can use on my phone so that I can keep track of what I would like to get.

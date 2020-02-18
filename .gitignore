@@ -24,8 +24,6 @@ yarn-error.log*
 
 /sass
 
-**/src/App.css
-
 package.json
 package-lock.json
 

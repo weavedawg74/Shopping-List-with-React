@@ -85,7 +85,8 @@ function App() {
 
   function handleAddItem(event) {
     event.preventDefault()
-    const itemName = itemNameRef.current.value
+    const trimmedUser = itemNameRef.current.value.trim()
+    const itemName = trimmedUser
     const itemListName = itemListRef.current.value
     if (itemName === '') return 
     setItemLists( prevItems => {
@@ -105,13 +106,13 @@ function App() {
       <NavbarShopping />
       <form id="submitform">
         <div className="form-row mt-4 mb-4"> 
-          <div className="col col-6 col-sm-6	col-md-6	col-lg-6	col-xl-6"> 
+          <div className="col col-6"> 
             <div className="md-form mt-0">
               <input type="text" className="form-control" placeholder="Type in your item" id="textarea" ref={itemNameRef}></input>
             </div>
           </div>
 
-          <div className="col col-4 col-sm-4	col-md-4 col-lg-4	col-xl-4"> 
+          <div className="col col-4"> 
 
             <select className="browser-default custom-select" id="selectedOption" ref={itemListRef}>
               <option value="" disabled>Select your option</option>
@@ -130,7 +131,7 @@ function App() {
             </select>
           </div>
 
-          <div className="col col-2 col-sm-2	col-md-2	col-lg-2	col-xl-2"> 
+          <div className="col col-2"> 
 
             <div className="form-group">
                 <button className="btn btn-primary" style={{width: "100%"}} onClick={handleAddItem}>Add</button>
@@ -143,9 +144,9 @@ function App() {
 
      
 
-      <div className="card-deck-wrapper">
-      <div className="card-columns">
+      <div className="card-deck mr-auto">
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="bakery">
             <img src={bakeryIcon} className="list-icon" alt="clipart of bread" style={iconStyle}></img>
@@ -155,7 +156,9 @@ function App() {
             <ShoppingList item={itemLists['Bakery']} toggleItem={id => toggleItem(id, 'Bakery')} deleteItem={id => deleteItem(id, 'Bakery')} editItem={(id, name) => toggleEditItem(id, name, 'Bakery')}/>
           </div>
         </div>
+      </div>
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="beverage">
             <img src={beverageIcon} className="list-icon" alt="clipart of a drink" style={iconStyle}></img>
@@ -165,7 +168,9 @@ function App() {
             <ShoppingList item={itemLists['Beverage']} toggleItem={id => toggleItem(id, 'Beverage')} deleteItem={id => deleteItem(id, 'Beverage')} editItem={(id, name) => toggleEditItem(id, name, 'Beverage')} />
           </div>
         </div>
+      </div>
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="cannedgood">
             <img src={cansIcon} className="list-icon" alt="clipart of canned good" style={iconStyle}></img>
@@ -175,7 +180,9 @@ function App() {
             <ShoppingList item={itemLists['Cans']} toggleItem={id => toggleItem(id, 'Cans')} deleteItem={id => deleteItem(id, 'Cans')} editItem={(id, name) => toggleEditItem(id, name, 'Cans')} />
           </div>
         </div>
+      </div>  
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="condiments">
             <img src={condimentsIcon} className="list-icon" alt="clipart of ketchup and mustard" style={iconStyle}></img>
@@ -185,7 +192,9 @@ function App() {
             <ShoppingList item={itemLists['Condiments']} toggleItem={id => toggleItem(id, 'Condiments')} deleteItem={id => deleteItem(id, 'Condiments')} editItem={(id, name) => toggleEditItem(id, name, 'Condiments')} />
           </div>
         </div>
+      </div>
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="dairy">
             <img src={dairyIcon} className="list-icon" alt="clipart of cheese" style={iconStyle}></img>
@@ -195,7 +204,9 @@ function App() {
           <ShoppingList item={itemLists['Dairy']} toggleItem={id => toggleItem(id, 'Dairy')} deleteItem={id => deleteItem(id, 'Dairy')} editItem={(id, name) => toggleEditItem(id, name, 'Dairy')} />
           </div>
         </div>
+      </div>  
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="deli">
             <img src={deliIcon} className="list-icon" alt="clipart of sandwich" style={iconStyle}></img>
@@ -205,7 +216,9 @@ function App() {
           <ShoppingList item={itemLists['Deli']} toggleItem={id => toggleItem(id, 'Deli')} deleteItem={id => deleteItem(id, 'Deli')} editItem={(id, name) => toggleEditItem(id, name, 'Deli')} />
           </div>
         </div>
+      </div>  
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="frozen">
             <img src={freezerIcon} className="list-icon" alt="clipart of snowflake" style={iconStyle}></img>
@@ -215,7 +228,9 @@ function App() {
             <ShoppingList item={itemLists['Frozen']} toggleItem={id => toggleItem(id, 'Frozen')} deleteItem={id => deleteItem(id, 'Frozen')} editItem={(id, name) => toggleEditItem(id, name, 'Frozen')} />
           </div>
         </div>
+      </div>  
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="household">
             <img src={householdIcon} className="list-icon" alt="clipart of cleaning items" style={iconStyle}></img>
@@ -225,6 +240,9 @@ function App() {
             <ShoppingList item={itemLists['Household']} toggleItem={id => toggleItem(id, 'Household')} deleteItem={id => deleteItem(id, 'Household')} editItem={(id, name) => toggleEditItem(id, name, 'Household')} />
           </div>
         </div>
+      </div>
+
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="hygiene">
             <img src={hygieneIcon} className="list-icon" alt="clipart of hygiene" style={iconStyle}></img>
@@ -234,7 +252,9 @@ function App() {
             <ShoppingList item={itemLists['Hygiene']} toggleItem={id => toggleItem(id, 'Hygiene')} deleteItem={id => deleteItem(id, 'Hygiene')} editItem={(id, name) => toggleEditItem(id, name, 'Hygiene')} />
           </div>   
         </div>
-        
+      </div>  
+
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4">       
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="meat">
             <img src={meatIcon} className="list-icon" alt="clipart of steak" style={iconStyle}></img>
@@ -244,7 +264,9 @@ function App() {
           <ShoppingList item={itemLists['Meat']} toggleItem={id => toggleItem(id, 'Meat')} deleteItem={id => deleteItem(id, 'Meat')} editItem={(id, name) => toggleEditItem(id, name, 'Meat')} />
           </div>
         </div>
+      </div>
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4"> 
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="pet">
             <img src={petIcon} className="list-icon" alt="clipart of dog and cat" style={iconStyle}></img>
@@ -254,7 +276,9 @@ function App() {
             <ShoppingList item={itemLists['Pet']} toggleItem={id => toggleItem(id, 'Pet')} deleteItem={id => deleteItem(id, 'Pet')} editItem={(id, name) => toggleEditItem(id, name, 'Pet')} />
           </div>
         </div>
+      </div>
 
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4"> 
         <div className="card border-dark">
           <div className="card-header bg-info text-white fa-lg" id="produce">
             <img src={produceIcon} className="list-icon" alt="clipart of broccoli" style={iconStyle}></img>
@@ -265,6 +289,8 @@ function App() {
           </div>
         </div>
       </div>
+
+
       </div>
       <Navbar />
       </div>
