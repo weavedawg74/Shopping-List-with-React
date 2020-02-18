@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1cacc90939a9a4617b420f80ce397c12",
+    "revision": "fc5206d35f00e020390942fba7375091",
     "url": "/Shopping-List-with-React/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Shopping-List-with-React/static/css/2.47e06e2e.chunk.css"
   },
   {
-    "revision": "40c41ea684441153a2c5",
-    "url": "/Shopping-List-with-React/static/css/main.fd6c5f82.chunk.css"
+    "revision": "8fefe97bafd486899564",
+    "url": "/Shopping-List-with-React/static/css/main.0721de45.chunk.css"
   },
   {
     "revision": "bdc8a9b32a49b6fcdb55",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Shopping-List-with-React/static/js/2.29ec9e91.chunk.js.LICENSE"
   },
   {
-    "revision": "40c41ea684441153a2c5",
-    "url": "/Shopping-List-with-React/static/js/main.2f291870.chunk.js"
+    "revision": "8fefe97bafd486899564",
+    "url": "/Shopping-List-with-React/static/js/main.e306eb94.chunk.js"
   },
   {
     "revision": "4e638f8cfd23f9de1cf4",
