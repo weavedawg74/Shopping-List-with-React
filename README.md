@@ -2,6 +2,7 @@
 
 ## Overview:
 
+[Link to site](https://weavedawg74.github.io/Shopping-List-with-React/)
 Design a simple tool that will allow the user to add shopping items to a list, the user will be to select their desired item category from a dropdown list and have the item added to the approriate section based on their selection.
 
 ## Installation Instructions:
